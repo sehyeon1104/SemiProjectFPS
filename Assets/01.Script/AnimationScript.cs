@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AnimationScript : MonoBehaviour
 {
+   
+        Vector3 move=new Vector3(0,0,0);    
     PlayerController playerController;
    Animator anim;
     void Start()
@@ -21,11 +23,18 @@ public class AnimationScript : MonoBehaviour
     }
     void Jump()
     {
-        anim.SetBool("Jump", playerController.isJump);
+        if(playerController.isJump==true)
+        {
+            anim.SetTrigger("Jump");
+            playerController.isJump = false;
+        }
+
     }
     void WalkAni()
     {
-        anim.SetBool("Walk", playerController.move.magnitude != 0);
+         move = transform.InverseTransformDirection(playerController.move);
+        anim.SetBool("Walk", playerController.isWalk);
+        anim.SetFloat("WalkSpeed", move.z > 0 ? 1 : -1);
     }
     void RunAni()
     {

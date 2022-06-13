@@ -27861,9 +27861,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   move: {x: 0, y: 0, z: 0}
-  jumpPower: 3
+  jumpPower: 5
   speed: 2
   gravity: 5
+  isWalk: 0
   isRun: 0
   isJump: 0
 --- !u!143 &5673810084785459852
