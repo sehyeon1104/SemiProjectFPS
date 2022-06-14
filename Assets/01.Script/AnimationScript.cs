@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class AnimationScript : MonoBehaviour
 {
-   
-        Vector3 move=new Vector3(0,0,0);    
+     
     PlayerController playerController;
    Animator anim;
     void Start()
@@ -32,9 +31,9 @@ public class AnimationScript : MonoBehaviour
     }
     void WalkAni()
     {
-         move = transform.InverseTransformDirection(playerController.move);
         anim.SetBool("Walk", playerController.isWalk);
-        anim.SetFloat("WalkSpeed", move.z > 0 ? 1 : -1);
+        anim.SetFloat("Horizontal", playerController.h);
+        anim.SetFloat("Vertical",playerController.v);
     }
     void RunAni()
     {

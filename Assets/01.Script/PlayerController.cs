@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public float h,v;
     public Vector3 move;
     CharacterController chcontroller;
     [SerializeField]
@@ -34,8 +35,8 @@ public class PlayerController : MonoBehaviour
         }
         if (chcontroller.isGrounded)
         {
-            float h = Input.GetAxisRaw("Horizontal");
-            float v = Input.GetAxisRaw("Vertical");
+             h = Input.GetAxisRaw("Horizontal");
+             v = Input.GetAxisRaw("Vertical");
 
             move = new Vector3(h, 0, v);
 
