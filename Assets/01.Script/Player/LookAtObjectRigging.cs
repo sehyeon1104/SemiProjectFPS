@@ -15,7 +15,7 @@ public class LookAtObjectRigging : MonoBehaviour
         rig.weight = Mathf.Lerp(rig.weight, targetWeight, Time.deltaTime*10f);
 
         if(Input.GetKeyDown(KeyCode.T))
-        {
+        {   
 
         }
     }
