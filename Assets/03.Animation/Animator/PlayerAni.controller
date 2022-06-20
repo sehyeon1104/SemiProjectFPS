@@ -136,7 +136,7 @@ BlendTree:
   m_Name: Blend Tree
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 07cc47597487fc54589dec8dbec721d1, type: 2}
+    m_Motion: {fileID: 7400000, guid: abd235fdfaf061740a16fd9f40a95da0, type: 2}
     m_Threshold: 0.125
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -378,7 +378,7 @@ BlendTree:
   m_Name: Walk
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 07cc47597487fc54589dec8dbec721d1, type: 2}
+    m_Motion: {fileID: 7400000, guid: abd235fdfaf061740a16fd9f40a95da0, type: 2}
     m_Threshold: 0
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
