@@ -21,7 +21,7 @@ public class ZombieController : MonoBehaviour
 
     void Update()
     {
-        print(rb.velocity);
+      
     }
     void Walk()
     {
@@ -34,6 +34,7 @@ public class ZombieController : MonoBehaviour
             zombieAnimation.SetBool("IsZombieWalk", true);
             if (randomPos == 0)
             {
+               
                 rb.velocity = new Vector3(0, 0, zombieSpeed); // 앞쪽으로
             }
             else if (randomPos == 1)
@@ -42,10 +43,12 @@ public class ZombieController : MonoBehaviour
             }
             else if (randomPos == 2)
             {
+                //transform.localEulerAngles = new Vector3(0, 90, 0);
                 rb.velocity = new Vector3(zombieSpeed, 0, 0); //오른쪽으로
             }
             else
             {
+                //transform.localEulerAngles = new Vector3(0, -90, 0);
                 rb.velocity = new Vector3(-zombieSpeed, 0, 0); // 왼쪽으로
             }
         }

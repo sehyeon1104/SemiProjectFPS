@@ -4,9 +4,8 @@ using UnityEngine;
 using UnityEngine.Animations.Rigging;
 public class RigAnimation : MonoBehaviour
 {
-    bool isIdle;
     TwoBoneIKConstraint twoBone;
- public  Animator animator;
+    public PlayerController playerController;
 
     void Start()
     {
@@ -16,8 +15,8 @@ public class RigAnimation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        isIdle = animator.GetBool("GunIdle");
-       if(isIdle)
+       
+       if(playerController.move.x==0&&playerController.move.z==0)
         {
             twoBone.weight = 1;
         }
@@ -26,4 +25,5 @@ public class RigAnimation : MonoBehaviour
             twoBone.weight = 0;
         }
     }
+    
 }
