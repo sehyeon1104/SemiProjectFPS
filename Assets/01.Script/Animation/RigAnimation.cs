@@ -16,7 +16,7 @@ public class RigAnimation : MonoBehaviour
     void Update()
     {
        
-       if(playerController.move.x==0&&playerController.move.z==0)
+       if(playerController.Move.x==0&&playerController.Move.z==0)
         {
             twoBone.weight = 1;
         }
