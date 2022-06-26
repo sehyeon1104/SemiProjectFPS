@@ -5,6 +5,7 @@ using UnityEngine.Events;
 using TMPro;
 public class PlayerController : MonoBehaviour
 {
+
     public TextMeshProUGUI destination;
     int currentBullet = 30;
     public int CurrentBullet { get => currentBullet; set { currentBullet = value; } }
@@ -17,6 +18,10 @@ public class PlayerController : MonoBehaviour
     public float V { get => v; }
      Vector3 move;
     public Vector3 Move { get => move; set { move = value; } }
+    [SerializeField]
+    GameObject waterFall;
+    [SerializeField]
+    ParticleSystem[] fireGroup;
    public GunController gunController;
     CharacterController chcontroller;
     [SerializeField]
@@ -58,6 +63,7 @@ public class PlayerController : MonoBehaviour
                 Debug.Log(hit.transform.gameObject.name);
                 if(hit.transform.gameObject.CompareTag("TriggerButton"))
                 {
+                    waterFall.SetActive(true);
                     destination.text = "긴급 소화가 시작됩니다";
                 }
             }

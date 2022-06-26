@@ -4,9 +4,11 @@ using UnityEngine;
 using TMPro;
 public class DestinationScript : MonoBehaviour
 {
+    BoxCollider boxCollider;
   public  TextMeshProUGUI destinationText;
     void Start()
     {
+        boxCollider = GetComponent<BoxCollider>();
     }
 
     // Update is called once per frame
@@ -14,11 +16,12 @@ public class DestinationScript : MonoBehaviour
     {
                  
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other) 
     {
         if(other.CompareTag("Player"))
         {
             destinationText.text = "버튼을 눌러 불을 끄시오";
+            boxCollider.enabled = false;
         }
     }
 
