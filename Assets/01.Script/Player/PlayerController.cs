@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Events;
 public class PlayerController : MonoBehaviour
 {
-    public float h,v;
-    public Vector3 move;
+    float timer = 0;
+    [field: SerializeField] UnityEvent shoot;
+     float h,v;
+    public float H { get => h; }
+    public float V { get => v; }
+     Vector3 move;
+    public Vector3 Move { get => move; set { move = value; } }
     CharacterController chcontroller;
     [SerializeField]
     float jumpPower = 10;
@@ -13,10 +18,13 @@ public class PlayerController : MonoBehaviour
     int speed = 5;
     [SerializeField]
     float gravity = 5;
-
-    public bool isWalk;
-    public bool isRun;
-    public bool isJump;
+    bool isShoot;
+     bool isWalk;
+    bool isRun;
+    bool isJump;
+    public bool IsWalk { get => isWalk; set { isWalk = value; } }
+     public bool IsRun { get => isRun; set { isRun = value; } }
+   public bool IsJump { get => isJump; set { isJump = value; } }
     void Start()
     {
         chcontroller = GetComponent<CharacterController>();
@@ -25,6 +33,15 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame  
     void Update()
     { 
+        if(Input.GetMouseButtonDown(0))
+        {
+            Onshoot();
+        }
+        timer += Time.deltaTime;
+        if (timer > 0.2f)
+        {
+            isShoot = true;
+        }
         isWalk = false;
       
         isRun = false;
@@ -62,6 +79,16 @@ public class PlayerController : MonoBehaviour
         }
 
         chcontroller.Move(move * Time.deltaTime * speed);
+    }
+    void Onshoot()
+    {
+      
+        if (move.x==0&&move.z==0&&isShoot)
+        {
+            shoot?.Invoke();
+            isShoot = false;
+            timer = 0;
+        }
     }
 
 }

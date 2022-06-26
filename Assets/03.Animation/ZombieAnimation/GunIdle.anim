@@ -35,7 +35,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: {x: -371.51, y: 55.886, z: 191.871}
+        value: {x: -373.138, y: 55.535, z: 191.946}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -21348,7 +21348,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: -371.51
+        value: -373.138
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -21367,7 +21367,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 55.886
+        value: 55.535
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -21386,7 +21386,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 191.871
+        value: 191.946
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -21837,7 +21837,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: root/pelvis/spine_01/spine_02/spine_03/clavicle_r/upperarm_r/lowerarm_r/hand_r/assault1
+    path: root/pelvis/Rig 1/GameObject/GameObject_target
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -21847,7 +21847,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: root/pelvis/spine_01/spine_02/spine_03/clavicle_r/upperarm_r/lowerarm_r/hand_r/assault1
+    path: root/pelvis/Rig 1/GameObject/GameObject_target
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -21857,7 +21857,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: root/pelvis/spine_01/spine_02/spine_03/clavicle_r/upperarm_r/lowerarm_r/hand_r/assault1
+    path: root/pelvis/Rig 1/GameObject/GameObject_target
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -21927,7 +21927,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: root/pelvis/Rig 1/GameObject/GameObject_target
+    path: root/pelvis/spine_01/spine_02/spine_03/clavicle_r/upperarm_r/lowerarm_r/hand_r/assault1
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -21937,7 +21937,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: root/pelvis/Rig 1/GameObject/GameObject_target
+    path: root/pelvis/spine_01/spine_02/spine_03/clavicle_r/upperarm_r/lowerarm_r/hand_r/assault1
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -21947,7 +21947,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: root/pelvis/Rig 1/GameObject/GameObject_target
+    path: root/pelvis/spine_01/spine_02/spine_03/clavicle_r/upperarm_r/lowerarm_r/hand_r/assault1
     classID: 4
     script: {fileID: 0}
   m_HasGenericRootTransform: 0
