@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class GunController : MonoBehaviour
 {
+    public AudioClip shootSound;
+    public AudioClip reloadSound;
+    public AudioClip noBulletSound;
+    int howShoot = 30;
+    int maxBullet = 60;
+    public int MaxBullet { get => maxBullet; set { maxBullet = value; } }
+    public PlayerController playerController;
     AudioSource audioSource;
     [SerializeField]
     ParticleSystem muzzleFlash;
@@ -13,19 +20,36 @@ public class GunController : MonoBehaviour
     GameObject firePos;
     private void Awake()
     {
-        audioSource =GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
     }
-    public void shootBullet()
+    private void Update()
     {
-        print("½ðÈ½¼ö");
-        Instantiate(prefab, firePos.transform.position, Quaternion.LookRotation(transform.forward)) ;
+
     }
-    public void MuzzleShoot()
+    public void ShootBullet()
     {
-        muzzleFlash.Play(); 
-    }
-    public void ShootMusic()
-    { 
+
+        Instantiate(prefab, firePos.transform.position, Quaternion.LookRotation(transform.forward));
+        audioSource.clip = shootSound;
+        audioSource.Play();
+        muzzleFlash.Play();
+    }  
+    public void ReloadGun()
+    {
+        if(maxBullet<=0)
+        {
+            return;
+        }
+
+        playerController.CurrentBullet = 30;
+        maxBullet -= howShoot;
+        audioSource.clip = reloadSound;
         audioSource.Play();
     }
+    public void NoBullet()
+    {
+        audioSource.clip = noBulletSound;
+        audioSource.Play();
+    }
+    
 }

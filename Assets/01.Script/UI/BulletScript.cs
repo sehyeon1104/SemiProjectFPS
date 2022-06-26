@@ -4,6 +4,8 @@ using UnityEngine;
 using TMPro;
 public class BulletScript : MonoBehaviour
 {
+    public PlayerController playerController;
+  public  GunController gunController;
     TextMeshProUGUI bulletTMP;
     // Start is called before the first frame update
     void Start()
@@ -14,6 +16,6 @@ public class BulletScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bulletTMP.text = "ad";
+        bulletTMP.text = $"{playerController.CurrentBullet}/{gunController.MaxBullet}";
     }
 }

@@ -13,10 +13,11 @@ public class BulletController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Destroy(gameObject,10f);
         transform.Translate(bulletVector);
     }
     private void OnCollisionEnter(Collision collision)
-    {
-        Destroy(gameObject);
+    {         
+       
     }
 }

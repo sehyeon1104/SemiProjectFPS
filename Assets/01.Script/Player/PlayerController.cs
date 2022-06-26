@@ -4,13 +4,18 @@ using UnityEngine;
 using UnityEngine.Events;
 public class PlayerController : MonoBehaviour
 {
+    int currentBullet = 30;
+    public int CurrentBullet { get => currentBullet; set { currentBullet = value; } }
     float timer = 0;
-    [field: SerializeField] UnityEvent shoot;
+    [field: SerializeField] UnityEvent Shoot;
+    [field: SerializeField] UnityEvent Reload;
+
      float h,v;
     public float H { get => h; }
     public float V { get => v; }
      Vector3 move;
     public Vector3 Move { get => move; set { move = value; } }
+   public GunController gunController;
     CharacterController chcontroller;
     [SerializeField]
     float jumpPower = 10;
@@ -33,6 +38,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame  
     void Update()
     { 
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            ReloadBullet();
+        }
         if(Input.GetMouseButtonDown(0))
         {
             Onshoot();
@@ -85,10 +94,21 @@ public class PlayerController : MonoBehaviour
       
         if (move.x==0&&move.z==0&&isShoot)
         {
-            shoot?.Invoke();
+            if (currentBullet <= 0)
+            {
+                print("d");
+                gunController.NoBullet();
+                return;
+            }
+            currentBullet--;
+            Shoot?.Invoke();
             isShoot = false;
             timer = 0;
         }
+    }
+    void ReloadBullet()
+    {
+            Reload?.Invoke(); 
     }
 
 }
