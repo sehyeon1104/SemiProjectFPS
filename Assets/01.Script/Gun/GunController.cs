@@ -40,15 +40,20 @@ public class GunController : MonoBehaviour
         {
             return;
         }
-
-        playerController.CurrentBullet = 30;
-        maxBullet -= howShoot;
         audioSource.clip = reloadSound;
         audioSource.Play();
+        Invoke("ReloadBullet", 0.5f);
+            
+    }
+    void ReloadBullet()
+    {
+        playerController.CurrentBullet = 30;
+        maxBullet -= howShoot;
     }
     public void NoBullet()
     {
         audioSource.clip = noBulletSound;
+
         audioSource.Play();
     }
     

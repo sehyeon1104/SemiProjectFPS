@@ -18,4 +18,5 @@ public class BulletScript : MonoBehaviour
     {
         bulletTMP.text = $"{playerController.CurrentBullet}/{gunController.MaxBullet}";
     }
+   
 }

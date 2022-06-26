@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using TMPro;
 public class PlayerController : MonoBehaviour
 {
+    public TextMeshProUGUI destination;
     int currentBullet = 30;
     public int CurrentBullet { get => currentBullet; set { currentBullet = value; } }
     float timer = 0;
@@ -27,6 +29,8 @@ public class PlayerController : MonoBehaviour
      bool isWalk;
     bool isRun;
     bool isJump;
+
+    
     public bool IsWalk { get => isWalk; set { isWalk = value; } }
      public bool IsRun { get => isRun; set { isRun = value; } }
    public bool IsJump { get => isJump; set { isJump = value; } }
@@ -37,7 +41,9 @@ public class PlayerController : MonoBehaviour
 
     // Update is called once per frame  
     void Update()
-    { 
+    {
+       
+        
         if(Input.GetKeyDown(KeyCode.R))
         {
             ReloadBullet();
@@ -45,6 +51,16 @@ public class PlayerController : MonoBehaviour
         if(Input.GetMouseButtonDown(0))
         {
             Onshoot();
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out hit, 10))
+            {
+                Debug.Log(hit.transform.gameObject.name);
+                if(hit.transform.gameObject.CompareTag("TriggerButton"))
+                {
+                    destination.text = "긴급 소화가 시작됩니다";
+                }
+            }
         }
         timer += Time.deltaTime;
         if (timer > 0.2f)
