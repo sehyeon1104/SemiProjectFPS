@@ -1,16 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
+
 public class PlayerController : MonoBehaviour
 {
-    [field: SerializeField] UnityEvent OnShoot;
-
-     float h,v;
-    public float H { get => h; }
-    public float V { get => v; }
-     Vector3 move;
-    public Vector3 Move { get => move; }
+    public float h,v;
+    public Vector3 move;
     CharacterController chcontroller;
     [SerializeField]
     float jumpPower = 10;
@@ -19,14 +14,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     float gravity = 5;
 
-   
-     bool isWalk;
-    public bool Iswalk { get => isWalk;  }
-    
-     bool isRun;
-    public bool IsRun { get=>isRun;}
-     bool isJump;
-    public bool IsJump { get => isJump; set { isJump = value; } }
+    public bool isWalk;
+    public bool isRun;
+    public bool isJump;
     void Start()
     {
         chcontroller = GetComponent<CharacterController>();
@@ -34,13 +24,9 @@ public class PlayerController : MonoBehaviour
 
     // Update is called once per frame  
     void Update()
-    {
-        Shoot();
-        MovePlayer();
-    }
-    void MovePlayer()
-    {
+    { 
         isWalk = false;
+      
         isRun = false;
         if ((move.x != 0 || move.z != 0) && (move.y == 0))
         {
@@ -49,8 +35,8 @@ public class PlayerController : MonoBehaviour
         }
         if (chcontroller.isGrounded)
         {
-            h = Input.GetAxisRaw("Horizontal");
-            v = Input.GetAxisRaw("Vertical");
+             h = Input.GetAxisRaw("Horizontal");
+             v = Input.GetAxisRaw("Vertical");
 
             move = new Vector3(h, 0, v);
 
@@ -61,9 +47,9 @@ public class PlayerController : MonoBehaviour
                 isJump = true;
                 move.y = jumpPower;
             }
-            if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKey(KeyCode.LeftShift) && (move.x != 0 || move.z != 0))
+            if (Input.GetKeyDown(KeyCode.LeftShift)||Input.GetKey(KeyCode.LeftShift) && (move.x != 0 || move.z != 0))
             {
-
+                
                 isWalk = false;
                 isRun = true;
                 move.x *= 2.5f;
@@ -76,13 +62,6 @@ public class PlayerController : MonoBehaviour
         }
 
         chcontroller.Move(move * Time.deltaTime * speed);
-    }
-    void Shoot()
-    {
-        if(Input.GetMouseButtonDown(0))
-        {
-            OnShoot?.Invoke();
-        }
     }
 
 }

@@ -22,21 +22,21 @@ public class AnimationScript : MonoBehaviour
     }
     void Jump()
     {
-        if(playerController.IsJump==true)
+        if(playerController.isJump==true)
         {
             anim.SetTrigger("Jump");
-            playerController.IsJump = false;
+            playerController.isJump = false;
         }
 
     }
     void WalkAni()
     {
-        anim.SetBool("Walk", playerController.Iswalk);
-        anim.SetFloat("Horizontal", playerController.H);
-        anim.SetFloat("Vertical",playerController.V);
+        anim.SetBool("Walk", playerController.isWalk);
+        anim.SetFloat("Horizontal", playerController.h);
+        anim.SetFloat("Vertical",playerController.v);
     }
     void RunAni()
     {
-        anim.SetBool("Run",playerController.IsRun);
+        anim.SetBool("Run",playerController.isRun);
     }
 }
