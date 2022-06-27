@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 public class DestinationScript : MonoBehaviour
 {
+    public ZombieKillText zombieKillText;
     BoxCollider boxCollider;
   public  TextMeshProUGUI destinationText;
     void Start()
@@ -18,7 +19,7 @@ public class DestinationScript : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other) 
     {
-        if(other.CompareTag("Player"))
+        if(other.CompareTag("Player")&&zombieKillText.zombie.Length==0)
         {
             destinationText.text = "버튼을 눌러 불을 끄시오";
             boxCollider.enabled = false;

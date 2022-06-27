@@ -18,5 +18,9 @@ public class BulletScript : MonoBehaviour
     {
         bulletTMP.text = $"{playerController.CurrentBullet}/{gunController.MaxBullet}";
     }
-   
+    private void OnCollisionEnter(Collision collision)
+    {
+        Destroy(gameObject);
+    }
+
 }

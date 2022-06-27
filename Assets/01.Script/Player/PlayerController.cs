@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using TMPro;
+using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
-
+    public ZombieKillText zombiekilltext;
+   public Scrollbar m_Scrollbar;
     public TextMeshProUGUI destination;
     int currentBullet = 30;
     public int CurrentBullet { get => currentBullet; set { currentBullet = value; } }
     float timer = 0;
     [field: SerializeField] UnityEvent Shoot;
     [field: SerializeField] UnityEvent Reload;
-
+    public float hp = 100;
+    float maxHp = 100;
      float h,v;
     public float H { get => h; }
     public float V { get => v; }
@@ -21,7 +24,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     GameObject waterFall;
     [SerializeField]
-    ParticleSystem[] fireGroup;
+    GameObject[] fireGroup;
+
    public GunController gunController;
     CharacterController chcontroller;
     [SerializeField]
@@ -41,13 +45,14 @@ public class PlayerController : MonoBehaviour
    public bool IsJump { get => isJump; set { isJump = value; } }
     void Start()
     {
+
         chcontroller = GetComponent<CharacterController>();
     }
 
     // Update is called once per frame  
     void Update()
     {
-       
+        PlayerHP();
         
         if(Input.GetKeyDown(KeyCode.R))
         {
@@ -60,11 +65,10 @@ public class PlayerController : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit, 10))
             {
-                Debug.Log(hit.transform.gameObject.name);
                 if(hit.transform.gameObject.CompareTag("TriggerButton"))
                 {
-                    waterFall.SetActive(true);
                     destination.text = "긴급 소화가 시작됩니다";
+                    StartCoroutine(OffFire());
                 }
             }
         }
@@ -132,6 +136,24 @@ public class PlayerController : MonoBehaviour
     {
             Reload?.Invoke(); 
     }
-
+    
+    IEnumerator OffFire()
+    {
+        yield return new WaitForSeconds(5f);
+        WaitForSeconds waitForSeconds = new WaitForSeconds(4f);
+        waterFall.SetActive(true);
+        yield return waitForSeconds;
+        foreach (GameObject game in fireGroup)
+        {
+            game.SetActive(false);
+        }
+        yield return waitForSeconds;
+        destination.text = "성공하셨습니다";
+        destination.fontSize += 20;
+    }
+    void PlayerHP()
+    {
+        m_Scrollbar.size = hp/maxHp;
+    }
 }
     
