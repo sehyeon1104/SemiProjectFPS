@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     GameObject waterFall;
     [SerializeField]
-    GameObject[] fireGroup;
+    ParticleSystem[] fireGroup;
 
    public GunController gunController;
     CharacterController chcontroller;
@@ -52,6 +52,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame  
     void Update()
     {
+        
         PlayerHP();
         
         if(Input.GetKeyDown(KeyCode.R))
@@ -136,20 +137,33 @@ public class PlayerController : MonoBehaviour
     {
             Reload?.Invoke(); 
     }
-    
+
     IEnumerator OffFire()
     {
         yield return new WaitForSeconds(5f);
         WaitForSeconds waitForSeconds = new WaitForSeconds(4f);
         waterFall.SetActive(true);
         yield return waitForSeconds;
-        foreach (GameObject game in fireGroup)
+        for(int i=0; i<fireGroup.Length; i++)
         {
-            game.SetActive(false);
+            int j = 0;
+            print($"{i}번째 : {fireGroup[i].startSize}");
+            fireGroup[i].startSize -= Time.deltaTime;
+            if (fireGroup[i].startSize<=0)
+            {
+                j++;
+            }
+            if(j==fireGroup.Length)
+            {
+                Invoke("TurnOffText", 5f);
+            }
         }
-        yield return waitForSeconds;
+       
+
+    }
+    void TurnOffText()
+    {
         destination.text = "성공하셨습니다";
-        destination.fontSize += 20;
     }
     void PlayerHP()
     {
