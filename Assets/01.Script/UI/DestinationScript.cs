@@ -23,7 +23,7 @@ public class DestinationScript : MonoBehaviour
         {
             destinationText.text = "버튼을 눌러 불을 끄시오";
             boxCollider.enabled = false;
-        }
+        }   
     }
 
 }
