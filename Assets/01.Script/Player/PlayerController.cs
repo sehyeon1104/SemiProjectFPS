@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     GameObject waterFall;
     [SerializeField]
-    ParticleSystem[] fireGroup;
+   List<ParticleSystem> fireGroup;
 
    public GunController gunController;
     CharacterController chcontroller;
@@ -140,25 +140,32 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator OffFire()
     {
+        int j = 0;
         yield return new WaitForSeconds(5f);
         WaitForSeconds waitForSeconds = new WaitForSeconds(4f);
         waterFall.SetActive(true);
         yield return waitForSeconds;
-        for(int i=0; i<fireGroup.Length; i++)
+
+        while (j < fireGroup.Count)
         {
-            int j = 0;
-            print($"{i}번째 : {fireGroup[i].startSize}");
-            fireGroup[i].startSize -= Time.deltaTime;
-            if (fireGroup[i].startSize<=0)
+
+
+            for (int i = 0; i < fireGroup.Count; i++)
             {
-                j++;
-            }
-            if(j==fireGroup.Length)
-            {
-                Invoke("TurnOffText", 5f);
+                    print($"{i}번째 : {fireGroup[i].startSize}");
+                    fireGroup[i].startSize -= Time.deltaTime;              
+                if (fireGroup[i].startSize <= 0)
+                {
+                   
+                }
+                if (j == fireGroup.Count)
+                {
+                    Invoke("TurnOffText", 5f);
+                    break;
+                }
             }
         }
-       
+        
 
     }
     void TurnOffText()
