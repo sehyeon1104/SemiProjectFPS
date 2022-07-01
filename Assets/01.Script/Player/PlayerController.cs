@@ -140,30 +140,25 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator OffFire()
     {
+        WaitForSeconds wait = new WaitForSeconds(3f);
         int j = 0;
-        yield return new WaitForSeconds(5f);
+        yield return wait;
         WaitForSeconds waitForSeconds = new WaitForSeconds(4f);
         waterFall.SetActive(true);
         yield return waitForSeconds;
 
         while (j < fireGroup.Count)
         {
-
-
+            j = 0;
             for (int i = 0; i < fireGroup.Count; i++)
             {
                     print($"{i}¹øÂ° : {fireGroup[i].startSize}");
-                    fireGroup[i].startSize -= Time.deltaTime;              
-                if (fireGroup[i].startSize <= 0)
+                    fireGroup[i].startSize -= Time.deltaTime;
+                if (fireGroup[i].startSize<=0)
                 {
-                   
+                    j++;
                 }
-                if (j == fireGroup.Count)
-                {
-                    Invoke("TurnOffText", 5f);
-                    break;
-                }
-            }
+            }            
         }
         
 
